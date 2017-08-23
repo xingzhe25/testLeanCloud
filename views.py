@@ -51,7 +51,7 @@ class TodoView(View):
             return HttpResponseServerError(e.error)
         return HttpResponseRedirect(reverse('todo_list'))
 
-class hiWetchat(View):
+class hiWechat(object):
     def GET(self):
         try:
             data = web.input()
