@@ -60,7 +60,7 @@ class hiWechat(View):
     def get(self, request):
         # 接收为信服务器参数
         signature = request.GET.get('signature', None)
-        timestamp request.GET.get('timestamp', None)
+        timestamp = request.GET.get('timestamp', None)
         nonce = request.GET.get('nonce', None)
         echostr = request.GET.get('echostr', None)
 
