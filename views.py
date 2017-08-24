@@ -79,6 +79,8 @@ class hiWechat(View):
         # 比较
         if hashstr == signature:
             return HttpResponse(echostr)
+        else:
+            return ""
 
 
     def post(self, request):
@@ -93,6 +95,6 @@ class hiWechat(View):
 
         t = loader.get_template('text.xml')
         c = Context({'toUser': toUser, 'fromUser': fromUser,
-            'nowtime': nowtime, 'content': 'hizl'})
+            'nowtime': nowtime, 'content': content})
 
         return HttpResponse(t.render(c))
