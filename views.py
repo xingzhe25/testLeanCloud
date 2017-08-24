@@ -96,7 +96,7 @@ class hiWechat(View):
 
         t = loader.get_template('text.xml')
         c = Context({'toUser': toUser, 'fromUser': fromUser,
-            'nowtime': createTime, 'content': 'hi'})
+            'nowtime': 1503562682, 'content': 'hi'})
 
         return HttpResponse(t.render(c))
 
