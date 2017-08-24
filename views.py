@@ -16,6 +16,8 @@ from leancloud.errors import LeanCloudError
 import hashlib
 from django.views.decorators.csrf import csrf_exempt
 import time
+from django.template import loader, Context
+from xml.etree import ElementTree as ET
 
 
 class Todo(Object):
@@ -77,3 +79,20 @@ class hiWechat(View):
         # 比较
         if hashstr == signature:
             return HttpResponse(echostr)
+
+
+    def post(self, request):
+        str_xml = ET.fromstring(request.body)
+
+        fromUser = str_xml.find('ToUserName').text
+        toUser = str_xml.find('FromUserName').text
+        content = str_xml.find('Content').text
+
+        # 获取当前时间
+        nowtime = str(init(time.time()))
+
+        t = loader.get_template('text.xml')
+        c = Context({'toUser': toUser, 'fromUser': fromUser,
+            'nowtime': nowtime, 'content': 'hi zl'})
+
+        return HttpResponse(t.render(c))
