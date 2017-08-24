@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^todos/?$', views.TodoView.as_view(), name='todo_list'),
     url(r'^static/(?P<path>.*)$', static.serve, {'document_root': 'static'}),
 
-    url(r'^hiwx/?$', views.hiWechat),
+    url(r'^hiwx/?$', views.hiWechat.as_view()),
 ]

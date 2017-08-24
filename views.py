@@ -14,7 +14,8 @@ from leancloud.errors import LeanCloudError
 
 # wexin
 import hashlib
-import web
+from django.views.decorators.csrf import csrf_exempt
+import time
 
 
 class Todo(Object):
@@ -51,28 +52,28 @@ class TodoView(View):
             return HttpResponseServerError(e.error)
         return HttpResponseRedirect(reverse('todo_list'))
 
-class hiWechat(object):
-    def GET(self):
-        try:
-            data = web.input()
-            if len(data) == 0:
-                return "hello, this is hi view"
-            signature = data.signature
-            timestamp = data.timestamp
-            nonce = data.nonce
-            echostr = data.echostr
-            token = "1db18532c43ec91f39b6448a865f4096" #请按照公众平台官网\基本配置中信息填写
+class hiWechat(View):
+    @csrf_exempt
+    def dispatch(self, *args, **kwargs):
+        return super(hiWechat, self).dispatch(*args, **kwargs)
 
-            list = [token, timestamp, nonce]
-            list.sort()
-            sha1 = hashlib.sha1()
-            map(sha1.update, list)
-            hashcode = sha1.hexdigest()
-            print "handle/GET func: hashcode, signature: ", hashcode, signature
-            if hashcode == signature:
-                return echostr
-            else:
-                return ""
-        except Exception, Argument:
-            return Argument
+    def get(self, request):
+        # 接收为信服务器参数
+        signature = request.GET.get('signature', None)
+        timestamp request.GET.get('timestamp', None)
+        nonce = request.GET.get('nonce', None)
+        echostr = request.GET.get('echostr', None)
 
+        token = '1db18532c43ec91f39b6448a865f4096'
+
+        # 序列化
+        hashlist = [token, timestamp, nonce]
+        hashlist.sort()
+
+        # 合成一个字符串
+        hashstr = ''.join([s for s in hashlist])
+        hashstr = hashlib.sha1(hashstr).hexdigest()
+
+        # 比较
+        if hashstr == signature:
+            return HttpResponse(echostr)
