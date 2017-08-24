@@ -89,12 +89,15 @@ class hiWechat(View):
         fromUser = str_xml.find('ToUserName').text
         toUser = str_xml.find('FromUserName').text
         content = str_xml.find('Content').text
+        createTime = str_xml.find('CreateTime').text
 
         # 获取当前时间
         nowtime = str(init(time.time()))
 
         t = loader.get_template('text.xml')
         c = Context({'toUser': toUser, 'fromUser': fromUser,
-            'nowtime': nowtime, 'content': content})
+            'nowtime': createTime, 'content': 'hi'})
 
         return HttpResponse(t.render(c))
+
+    #return HttpResponse(str(init(time.time())))
