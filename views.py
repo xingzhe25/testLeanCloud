@@ -55,9 +55,9 @@ class TodoView(View):
         return HttpResponseRedirect(reverse('todo_list'))
 
 class hiWechat(View):
-    @csrf_exempt
-    def dispatch(self, *args, **kwargs):
-        return super(hiWechat, self).dispatch(*args, **kwargs)
+    # @csrf_exempt
+    # def dispatch(self, *args, **kwargs):
+    #     return super(hiWechat, self).dispatch(*args, **kwargs)
 
     def get(self, request):
         # 接收为信服务器参数
