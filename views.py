@@ -121,9 +121,9 @@ class hiWechat(View):
 
         if isinstance(message, TextMessage):
             # 当前会话内容
-            #content = message.content.strip()
-            content = getwangyi("http://news.163.com/rank/")
-            response = wechat_instance.response_text("hello")
+            content = message.content.strip()
+            #content = getwangyi("http://news.163.com/rank/")
+            response = wechat_instance.response_text(content)
 
         return HttpResponse(response, content_type="application/xml")
 
