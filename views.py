@@ -23,7 +23,7 @@ from wechat_sdk.exceptions import ParseError
 from wechat_sdk.messages import TextMessage
 
 # pacong
-from pachong.newsSpider import page_info, new_page_info
+from pachong.newsSpider import page_info
 
 WECHAT_TOKEN = '1db18532c43ec91f39b6448a865f4096'
 # 实例化 WechatBasic
