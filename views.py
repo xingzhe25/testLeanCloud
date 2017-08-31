@@ -24,6 +24,7 @@ from wechat_sdk.messages import TextMessage
 
 # pacong
 from pachong.newsSpider import page_info
+import requests
 
 WECHAT_TOKEN = '1db18532c43ec91f39b6448a865f4096'
 # 实例化 WechatBasic

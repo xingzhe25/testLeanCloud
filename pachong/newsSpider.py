@@ -4,7 +4,7 @@
 # import sys
 # import os
 # import urllib2
-# import requests
+import requests
 import re
 #from lxml import etree
 import random
@@ -54,23 +54,23 @@ def page_info(myPage):
 #         StringListSave(save_path, filename, newPageResults)
 #         i += 1
 #         #break
-# def getwangyi(url):
-#         content = "没获取到内容"
-#         print "downloading ", url
-#         myPage = requests.get(url).content.decode("gbk")
-#         myPageResults = page_info(myPage)
-#         url_list = []
-#         for next_url, item in myPageResults:
-#             #print "downloading ", next_url
-#             #new_page = requests.get(next_url).content.decode("gbk")
-#             #newPageResults = new_page_info(new_page)
-#             url_list.append(next_url)
-#         #print url_list
+def getwangyi(url):
+        content = "没获取到内容"
+        print "downloading ", url
+        myPage = requests.get(url).content.decode("gbk")
+        myPageResults = page_info(myPage)
+        url_list = []
+        for next_url, item in myPageResults:
+            #print "downloading ", next_url
+            #new_page = requests.get(next_url).content.decode("gbk")
+            #newPageResults = new_page_info(new_page)
+            url_list.append(next_url)
+        #print url_list
 
-#         xuanze = random.randint(0, len(url_list))
-#         content = url_list[xuanze]
+        xuanze = random.randint(0, len(url_list))
+        content = url_list[xuanze]
 
-#         return content
+        return content
 
 # if __name__ == '__main__':
 #     print "start"
