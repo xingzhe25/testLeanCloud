@@ -1,0 +1,93 @@
+<ul>
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/android" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/6227c34f-5efd-4df2-911d-91654cb0691c.png" alt="Android工程师">
+                        <h3>Android工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/web" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/4cdffb64-3d45-49f3-84c3-60f2349a25c2.png" alt="Web前端工程师">
+                        <h3>Web前端工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/wechatapp" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/f1f87ca2-3d23-4220-8043-52394a190b89.png" alt="微信小程序工程师">
+                        <h3>微信小程序工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/python" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/5e981faa-abed-4974-a127-d616c8076328.png" alt="Python工程师">
+                        <h3>Python工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/php" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/914408a9-afc8-4aaf-8ff3-f7a2497bfeba.png" alt="PHP工程师">
+                        <h3>PHP工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/go" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/6a6c62c4-a823-44f8-942c-0a0e0e256b17.png" alt="Go语言工程师">
+                        <h3>Go语言工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/ios" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/8950bb99-3b4e-4e1e-a0d4-ffbf04590c15.png" alt="iOS工程师">
+                        <h3>iOS工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li class="status">
+                    <a class="card " href="/zhiye/bigdata" target="_blank">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170808/41f60ad5-db13-416e-ad37-08495dbc0377.png" alt="大数据平台研发工程师">
+                        <h3>大数据平台研发工程师</h3>
+                    </a>
+                </li>
+                
+        
+                
+                <li>
+                    <div class="card">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/9ef6a548-9702-4c5b-96a2-a04995dd738e.png" alt="人工智能工程师" title="即将上线">
+                        <h3>人工智能工程师</h3>
+                    </div>
+                </li>
+                
+        
+                
+                <li>
+                    <div class="card">
+                        <img src="http://jiuye-res.jikexueyuan.com/zhiye/showcase/attach-/20170704/ad309043-9e84-4535-b85e-7b52ac4e3b2b.png" alt="JavaWeb工程师" title="即将上线">
+                        <h3>JavaWeb工程师</h3>
+                    </div>
+                </li>
+                
+        
+    </ul>

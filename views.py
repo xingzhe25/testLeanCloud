@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseServerError
 from django.shortcuts import render
@@ -18,7 +18,16 @@ from django.views.decorators.csrf import csrf_exempt
 import time
 from django.template import loader, Context
 from xml.etree import ElementTree as ET
+from wechat_sdk.basic import WechatBasic
+from wechat_sdk.exceptions import ParseError
+from wechat_sdk.messages import TextMessage
 
+# pacong
+from pachong.newsSpider import page_info, new_page_info
+
+WECHAT_TOKEN = '1db18532c43ec91f39b6448a865f4096'
+# 实例化 WechatBasic
+wechat_instance = WechatBasic(token=WECHAT_TOKEN)
 
 class Todo(Object):
     pass
@@ -83,21 +92,50 @@ class hiWechat(View):
             return ""
 
 
+    # def post(self, request):
+    #     str_xml = ET.fromstring(request.body)
+
+    #     fromUser = str_xml.find('ToUserName').text
+    #     toUser = str_xml.find('FromUserName').text
+    #     content = str_xml.find('Content').text
+    #     createTime = str_xml.find('CreateTime').text
+
+    #     # 获取当前时间
+    #     nowtime = str(init(time.time()))
+
+    #     t = loader.get_template('text.xml')
+    #     c = Context({'toUser': toUser, 'fromUser': fromUser,
+    #         'nowtime': 1503562682, 'content': 'hi'})
+
+    #     return HttpResponse(t.render(c))
+
     def post(self, request):
-        str_xml = ET.fromstring(request.body)
+        try:
+            wechat_instance.parse_data(data = request.body)
+        except ParseError:
+            return HttpResponseBadRequest('Invalid XML Data')
 
-        fromUser = str_xml.find('ToUserName').text
-        toUser = str_xml.find('FromUserName').text
-        content = str_xml.find('Content').text
-        createTime = str_xml.find('CreateTime').text
+        # 获取解析好的微信请求信息
+        message = wechat_instance.get_message()
 
-        # 获取当前时间
-        nowtime = str(init(time.time()))
+        if isinstance(message, TextMessage):
+            # 当前会话内容
+            #content = message.content.strip()
+            content = getwangyi("http://news.163.com/rank/")
+            response = wechat_instance.response_text(content)
 
-        t = loader.get_template('text.xml')
-        c = Context({'toUser': toUser, 'fromUser': fromUser,
-            'nowtime': 1503562682, 'content': 'hi'})
+        return HttpResponse(response, content_type="application/xml")
 
-        return HttpResponse(t.render(c))
+    def getwangyi(url):
+        content = "没获取到内容"
+        print "downloading ", url
+        myPage = requests.get(url).content.decode("gbk")
+        myPageResults = page_info(myPage)
+        for next_url, item in myPageResults:
+            print "downloading ", next_url
+            #new_page = requests.get(next_url).content.decode("gbk")
+            #newPageResults = new_page_info(new_page)
+            content = next_url
+            break
 
-    #return HttpResponse(str(init(time.time())))
+        return content

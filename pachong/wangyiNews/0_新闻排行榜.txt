@@ -1,0 +1,12 @@
+http://news.163.com/special/0001386F/rank_news.html		新闻
+http://news.163.com/special/0001386F/rank_ent.html		娱乐
+http://news.163.com/special/0001386F/rank_sports.html		体育
+http://money.163.com/special/002526BH/rank.html		财经
+http://news.163.com/special/0001386F/rank_tech.html		科技
+http://news.163.com/special/0001386F/rank_auto.html		汽车
+http://news.163.com/special/0001386F/rank_lady.html		女人
+http://news.163.com/special/0001386F/rank_house.html		房产
+http://news.163.com/special/0001386F/rank_book.html		读书
+http://news.163.com/special/0001386F/game_rank.html		游戏
+http://news.163.com/special/0001386F/rank_travel.html		旅游
+http://news.163.com/special/0001386F/rank_edu.html		教育
