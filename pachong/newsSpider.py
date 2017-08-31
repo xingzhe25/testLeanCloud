@@ -7,6 +7,7 @@ import urllib2
 import requests
 import re
 from lxml import etree
+import random
 
 def StringListSave(save_path, filename, slist):
     if not os.path.exists(save_path):
@@ -53,9 +54,27 @@ def Spider(url):
         StringListSave(save_path, filename, newPageResults)
         i += 1
         #break
+def getwangyi(url):
+        content = "没获取到内容"
+        print "downloading ", url
+        myPage = requests.get(url).content.decode("gbk")
+        myPageResults = page_info(myPage)
+        url_list = []
+        for next_url, item in myPageResults:
+            #print "downloading ", next_url
+            #new_page = requests.get(next_url).content.decode("gbk")
+            #newPageResults = new_page_info(new_page)
+            url_list.append(next_url)
+        #print url_list
+
+        xuanze = random.randint(0, len(url_list))
+        content = url_list[xuanze]
+        
+        return content
 
 if __name__ == '__main__':
     print "start"
     start_url = "http://news.163.com/rank/"
-    Spider(start_url)
+    #Spider(start_url)
+    print "*** " + getwangyi(start_url)
     print "end"

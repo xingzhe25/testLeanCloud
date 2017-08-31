@@ -131,11 +131,15 @@ class hiWechat(View):
         print "downloading ", url
         myPage = requests.get(url).content.decode("gbk")
         myPageResults = page_info(myPage)
+        url_list = []
         for next_url, item in myPageResults:
-            print "downloading ", next_url
+            #print "downloading ", next_url
             #new_page = requests.get(next_url).content.decode("gbk")
             #newPageResults = new_page_info(new_page)
-            content = next_url
-            break
+            url_list.append(next_url)
+        #print url_list
 
+        xuanze = random.randint(0, len(url_list))
+        content = url_list[xuanze]
+        
         return content
