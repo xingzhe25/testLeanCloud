@@ -121,15 +121,15 @@ class hiWechat(View):
 
         if isinstance(message, TextMessage):
             # 当前会话内容
-            content = message.content.strip()
-            #content = getwangyi("http://news.163.com/rank/")
-            response = wechat_instance.response_text(content)
+            #content = message.content.strip()
+            content = getwangyi("http://news.163.com/rank/")
+            response = wechat_instance.response_text(content = content)
 
         return HttpResponse(response, content_type="application/xml")
 
     def getwangyi(url):
-        content = "没获取到内容"
-        print "downloading ", url
+        content = '没获取到内容'
+        #print "downloading ", url
         myPage = requests.get(url).content.decode("gbk")
         myPageResults = page_info(myPage)
         url_list = []
