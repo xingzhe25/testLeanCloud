@@ -1,6 +1,7 @@
 # coding: utf-8
 
 from datetime import datetime
+import random
 
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.http import HttpResponseRedirect
