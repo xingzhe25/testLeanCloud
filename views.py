@@ -126,12 +126,12 @@ class hiWechat(View):
             #content = getwangyi("http://news.163.com/rank/")
             response = wechat_instance.response_text(content=content)
 
-            wangyiLink = self.getwangyi("http://news.163.com/rank/")
+            wangyiLink = self.getwangyi(url="http://news.163.com/rank/")
             print "**wangyiLink: " + wangyiLink
 
         return HttpResponse(response, content_type="application/xml")
 
-    def getwangyi(url):
+    def getwangyi(self, url):
         content = '没获取到内容'
         #print "downloading ", url
         myPage = requests.get(url).content.decode("gbk")
