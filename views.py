@@ -126,7 +126,7 @@ class hiWechat(View):
             #content = getwangyi("http://news.163.com/rank/")
             response = wechat_instance.response_text(content=content)
 
-            wangyiLink = getwangyi("http://news.163.com/rank/")
+            wangyiLink = self.getwangyi("http://news.163.com/rank/")
             print "**wangyiLink: " + wangyiLink
 
         return HttpResponse(response, content_type="application/xml")
