@@ -135,6 +135,9 @@ class hiWechat(View):
 
             response = wechat_instance.response_text(content=wangyiLink)
 
+        else:
+            response = wechat_instance.response_text(content="功能升级中")
+
 
         return HttpResponse(response, content_type="application/xml")
 
