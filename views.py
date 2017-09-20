@@ -122,13 +122,14 @@ class hiWechat(View):
 
         if isinstance(message, TextMessage):
             # 当前会话内容
-            content = message.content.strip().decode('utf-8')
+            content = message.content.strip().decode('gbk')
             print "**content: " + content
-            #content = getwangyi("http://news.163.com/rank/")
-            response = wechat_instance.response_text(content=content)
-
+            #content = getwangyi("http://news.163.com/rank/")            
             wangyiLink = self.getwangyi(url="http://news.163.com/rank/")
             print "**wangyiLink: " + wangyiLink
+            
+            response = wechat_instance.response_text(content=content)
+
 
         return HttpResponse(response, content_type="application/xml")
 
