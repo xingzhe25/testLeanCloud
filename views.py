@@ -27,6 +27,11 @@ from wechat_sdk.messages import TextMessage
 from pachong.newsSpider import page_info
 import requests
 
+# 中文支持
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 WECHAT_TOKEN = '1db18532c43ec91f39b6448a865f4096'
 # 实例化 WechatBasic
 wechat_instance = WechatBasic(token=WECHAT_TOKEN)
@@ -122,12 +127,12 @@ class hiWechat(View):
 
         if isinstance(message, TextMessage):
             # 当前会话内容
-            content = message.content.strip().decode('gbk')
+            content = message.content.strip()
             print "**content: " + content
             #content = getwangyi("http://news.163.com/rank/")            
             wangyiLink = self.getwangyi(url="http://news.163.com/rank/")
             print "**wangyiLink: " + wangyiLink
-            
+
             response = wechat_instance.response_text(content=content)
 
 
