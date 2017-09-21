@@ -24,7 +24,7 @@ from wechat_sdk.exceptions import ParseError
 from wechat_sdk.messages import TextMessage
 
 # pacong
-from pachong.newsSpider import page_info
+from pachong.newsSpider import page_info, getQiuShi
 import requests
 
 # 中文支持
@@ -130,10 +130,21 @@ class hiWechat(View):
             content = message.content.strip()
             print "**content: " + content
             #content = getwangyi("http://news.163.com/rank/")            
-            wangyiLink = self.getwangyi(url="http://news.163.com/rank/")
-            print "**wangyiLink: " + wangyiLink
+            
+            #wangyiLink = self.getwangyi(url="http://news.163.com/rank/")
+            #print "**wangyiLink: " + wangyiLink
 
-            response = wechat_instance.response_text(content=wangyiLink)
+            qsContent = getQiuShi("https://www.qiushibaike.com/text/")
+            try:
+                if content.isdigit():
+                    content = int(content)
+                    res = qsContent[content] + qsContent[content + 1] + qsContent[content + 2]
+                else:
+                    res = "请输入数字"
+            except Exception as e:
+                res = e
+
+            response = wechat_instance.response_text(content=res)
 
         else:
             response = wechat_instance.response_text(content="功能升级中")

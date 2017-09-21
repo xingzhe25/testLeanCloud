@@ -15,7 +15,7 @@ from cloud import engine
 import logging
 
 # 开启日志
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
 
 APP_ID = os.environ['LC_APP_ID']
 MASTER_KEY = os.environ['LC_APP_MASTER_KEY']

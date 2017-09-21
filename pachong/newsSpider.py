@@ -55,26 +55,49 @@ def page_info(myPage):
 #         i += 1
 #         #break
 def getwangyi(url):
-        content = "没获取到内容"
-        print "downloading ", url
-        myPage = requests.get(url).content.decode("gbk")
-        myPageResults = page_info(myPage)
-        url_list = []
-        for next_url, item in myPageResults:
-            #print "downloading ", next_url
-            #new_page = requests.get(next_url).content.decode("gbk")
-            #newPageResults = new_page_info(new_page)
-            url_list.append(next_url)
-        #print url_list
+    content = "没获取到内容"
+    print "downloading ", url
+    myPage = requests.get(url).content.decode("gbk")
+    myPageResults = page_info(myPage)
+    url_list = []
+    for next_url, item in myPageResults:
+        #print "downloading ", next_url
+        #new_page = requests.get(next_url).content.decode("gbk")
+        #newPageResults = new_page_info(new_page)
+        url_list.append(next_url)
+    #print url_list
 
-        xuanze = random.randint(0, len(url_list))
-        content = url_list[xuanze]
+    xuanze = random.randint(0, len(url_list))
+    content = url_list[xuanze]
 
-        return content
+    return content
 
-# if __name__ == '__main__':
-#     print "start"
-#     start_url = "http://news.163.com/rank/"
-#     #Spider(start_url)
-#     print "*** " + getwangyi(start_url)
-#     print "end"
+# 爬取糗事百科
+def getQiuShi(url):
+    qsPage = requests.get(url).content.strip()
+    qsResults = infoQiuShi(qsPage)
+    return qsResults
+
+def infoQiuShi(qsPage):
+    qsInfos = re.findall(r'<div class="content">.*?<span>(.*?)</span>.*?</div>', qsPage, re.S)
+    return qsInfos
+
+
+if __name__ == '__main__':
+    print 'start'
+
+    start_url = 'https://www.qiushibaike.com/text/'
+    #Spider(start_url)
+    qsContent = getQiuShi(start_url)
+    num = '2'
+    try:
+        if num.isdigit():
+            num = int(num)
+            res = qsContent[num] + qsContent[num + 1] + qsContent[num + 2]
+        else:
+            res = "请输入数字"
+    except Exception as e:
+        res = e
+    print res
+    
+    print 'end'
