@@ -94,6 +94,7 @@ if __name__ == '__main__':
         if num.isdigit():
             num = int(num)
             res = qsContent[num] + qsContent[num + 1] + qsContent[num + 2]
+            res = "请输入小于 %d 的整数." % num
         else:
             res = "请输入数字"
     except Exception as e:

@@ -138,7 +138,11 @@ class hiWechat(View):
             try:
                 if content.isdigit():
                     content = int(content)
-                    res = qsContent[content] + qsContent[content + 1] + qsContent[content + 2]
+                    maxlen = len(qsContent)
+                    if content > maxlen:
+                        res = "请输入小于 %d 的整数." % maxlen
+                    else:
+                        res = qsContent[content] + qsContent[content + 1] + qsContent[content + 2]
                 else:
                     res = "请输入数字"
             except Exception as e:
